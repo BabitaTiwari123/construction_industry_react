@@ -1,43 +1,696 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html>
+<head>
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="SMART WINDOW" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<style>
+* {box-sizing: border-box;
+height: 98%;
+padding:0;
+    margin:0;
+text-decoration: none;
+list-style: none;
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
-</html>
+/* Slideshow container */
+.slideshow-container {
+  width: 100%;
+  
+  position: relative;
+  margin:auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: rgb(131, 211, 224);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+
+}
+.active {
+
+  background-color: red;
+}
+.centered {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-35%, -55%);
+  font-size: 26px;
+  font-family:proxima-nova,myriad pro,sans-serif;
+  color: white;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+.centered span{
+    color: yellow;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: none;
+  -webkit-animation-duration: 1.5s ;
+  animation-name: none;
+  animation-duration: 1.5s ;
+  
+}
+
+@-webkit-keyframes none {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes none {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+
+}
+nav .logo{
+  color: white;
+  font-size: 33px;
+  font-weight: bold;
+  line-height: 70px;
+  padding-left: 110px;
+}
+nav{
+  height: 70px;
+  background: #063247;
+  box-shadow: 0 3px 15px rgba(0,0,0,.4);
+}
+nav ul{
+  float: right;
+  margin-right: 30px;
+}
+nav ul li{
+  display: inline-block;
+}
+nav ul li a{
+  color: white;
+  display: block;
+  padding: 0 15px;
+  line-height: 70px;
+  font-size: 20px;
+  background: #063247;
+  transition: .5s;
+}
+nav ul li a:hover,
+nav ul li a.active{
+  color: #23dbdb;
+}
+nav ul ul{
+  position: absolute;
+  top: 85px;
+  border-top: 3px solid #23dbdb;
+  opacity: 0;
+  visibility: hidden;
+}
+nav ul li:hover > ul{
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+  transition: .3s linear;
+}
+nav ul ul li{
+  width: 150px;
+  display: list-item;
+  position: relative;
+  border: 1px solid #042331;
+  border-top: none;
+}
+nav ul ul li a{
+  line-height: 50px;
+}
+nav ul ul ul{
+  border-top: none;
+}
+nav ul ul ul li{
+  position: relative;
+  top: -70px;
+  left: 150px;
+}
+nav ul ul li a i{
+  margin-left: 45px;
+
+}
+.footer {
+  position:fixed;
+              padding: 10px 10px 0px 10px;
+
+  bottom:0;
+  left:0;
+  width:100%;
+  height: 90px;
+  background-color: #D0DAEE;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXahpRjXxVrYMgI7VozX1PJl7O31USBpyhng&usqp=CAU');
+}
+ .footer-text-left {
+  color: black;
+  font-size:25px;
+  padding-left:40px;
+  float:left;
+  word-spacing:20px;
+}
+
+a.menu:hover {
+  background-color:Violet;
+  font-size:20px;
+}
+.footer-content-right {
+  padding-right:40px;
+  margin-top:20px;
+  float:right;
+}
+
+.icon-style {
+  height:40px;
+  margin-left:20px;
+  margin-top:5px;
+}
+
+.icon-style:hover {
+  background-color:yellow;
+  padding:5px;
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+.uk span{
+  float: right;
+
+}
+.child{
+  display: inline-block;
+  height:40%;
+  width: 40%;
+  float: right;
+  padding: 150px;
+}
+
+.dotclass{
+  height: 25px;
+
+}
+
+.ik{
+  height:   200px;
+}
+
+ .video img{
+  margin: 100px;
+  height:250px;
+width: 600px;
+ }
+
+.column {
+  float: left;
+  width: 30%;
+  padding: 10px;
+  
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  
+  clear: both;
+  display: table;
+}
+
+/*slider*/
+.slider-holder
+        {
+            width: 800px;
+            height: 400px;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0px;
+            text-align: center;
+            overflow: hidden;
+        }
+       
+        .image-holder
+        {
+            width: 2400px;
+            
+            height: 400px;
+            clear: both;
+            position: relative;
+           
+            -webkit-transition: left 2s;
+            -moz-transition: left 2s;
+            -o-transition: left 2s;
+            transition: left 2s;
+        }
+       
+        .slider-image
+        {
+            float: left;
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
+       
+        #slider-image-1:target ~ .image-holder
+        {
+            left: 0px;
+        }
+       
+        #slider-image-2:target ~ .image-holder
+        {
+            left: -800px;
+        }
+       
+        #slider-image-3:target ~ .image-holder
+        {
+            left: -1600px;
+        }
+       
+        .button-holder
+        {
+            position: relative;
+            top: -50px;
+            height: 30px;
+
+        }
+       
+        .slider-change
+        {
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            border-radius: 25px;
+            background-color:  #ffde16;
+        }
+        .column1 {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+    .slider-holder1
+        {
+            width: 800px;
+            height: 400px;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0px;
+            text-align: center;
+            overflow: hidden;
+        }
+       
+        .image-holder1
+        {
+            width: 2400px;
+            
+            height: 400px;
+            clear: both;
+            position: relative;
+           
+            -webkit-transition: left 2s;
+            -moz-transition: left 2s;
+            -o-transition: left 2s;
+            transition: left 2s;
+        }
+       
+        .slider-image1
+        {
+            float: left;
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
+       
+        #slider-image-4:target ~ .image-holder1
+        {
+            left: 0px;
+        }
+       
+        #slider-image-5:target ~ .image-holder1
+        {
+            left: -800px;
+        }
+       
+        #slider-image-6:target ~ .image-holder1
+        {
+            left: -1600px;
+        }
+       
+        .button-holder1
+        {
+            position: relative;
+            top: -50px;
+            height: 30px;
+
+        }
+       
+        .slider-change1
+        {
+            display: inline-block;
+            height: 40px;
+            width: 120px;
+            
+            background-color:  #ffde16;
+        }
+  
+     .button-holder1 :hover{
+      background-color: #ebeae8;
+
+     }
+
+     input[type=text], select, textarea {
+  width: 50%;
+  height:40px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  
+}
+
+input[type=submit] {
+    width: 50%;
+  height:40px;
+
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+    
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 100px;
+}
+       
+</style>
+</head>
+<body>
+    <nav>
+         <label class="logo" >
+            <img src="https://i.pinimg.com/600x315/3f/60/df/3f60df5f0e3f3ded514cc84e8c7b07f8.jpg">construction industry
+
+         </label>
+         <ul>
+            <li><a class="active" href="smartwindow.html">Home</a></li>
+            <li>
+               <a href="#service">Services
+              
+               </a>
+              </li>
+            <li>
+               <a href="#uk">About</a></li>
+               
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+         </ul>
+      </nav>
+
+
+<div class="slideshow-container">
+    <div class="mySlides fade">
+  
+  <img src="https://www.sageglass.com/sites/default/files/vertical_headline_image/products_t1.jpg" style="width:100%">
+  
+</div>
+
+<div class="mySlides fade">
+  
+  <img src="https://www.sageglass.com/sites/default/files/vertical_headline_image/products_t2.jpg" style="width:100%">
+  
+</div>
+<div class="mySlides fade">
+  
+  <img src="https://www.sageglass.com/sites/default/files/vertical_headline_image/products_t3.jpg" style="width:100%">
+  
+</div>
+
+<div class="mySlides fade">
+  
+  <img src="https://www.sageglass.com/sites/default/files/vertical_headline_image/products_t4.jpg" style="width:100%">
+  
+</div>
+<div class="centered" >
+    <h1 style="  text-shadow: 2px 2px #FF0000;
+">WE ARE BUILDERS <br><span>WE WILL BUILD YOUR  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DREAM. </span></h1>
+</div>
+
+<div class = "dotclass" style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+
+</div>
+
+</div>
+
+<br>
+<br>
+<div class="uk"  style="background-color: #ebeae8; height: 400px;"><div class="child">
+    <h4> WELCOME TO </h4><br>
+     ELVO CONSTRUCTION
+     We are the leader with 25 years of experience
+     in the construction market! </div>
+     <div class="video">
+        <img src="https://cdn.oneesports.gg/cdn-data/sites/2/2021/09/Team-ELVO_Logo-1024x576.jpg" /></div></div>
+    
+  <b><div id="service" style="font-size: 35px; font-family:proxima-nova,myriad pro,sans-serif; height: 30px; text-align: center; padding: 40px;">SERVICES
+</h2></b></div>
+
+
+<div class="row" style="height:340px; padding: 60px;">
+    <div class="column">
+      <img src="https://images01.nicepage.com/ed/81/ed81ebf732fec2e03d496bca9314f258.png" alt="Snow" style="width:100%;
+      ">
+     
+  <b><div style="font-size: 25px; padding: 10px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center;">Preconstruction Planning</b>
+  <div style=" font-size: 17px;   font-family:proxima-nova,myriad pro,sans-serif; text-align: center;">creating a strategic plan for the project, creating a design, securing permits or entitlements, and gathering the labor and resources required for construction.
+  </div>
+  </div>
+    </div>
+  
+    <div class="column">
+        <img src="https://images01.nicepage.com/fc/c6/fcc6b22e1ce851ad1ffee68a386f9d89.png" alt="Forest" style="width:100%">
+        <b><div style="font-size: 20px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding: 8px;">Architectural
+          Modelling</b><div style=" font-size: 17px;   font-family:proxima-nova,myriad pro,sans-serif; text-align: center;">An architectural model is a type of scale model made to study aspects of an architectural design or to communicate design intent. They can be made from a variety of materials such as paper, plaster, plastic, resin, wood, glass and metal. 
+        </div>
+      </div>
+    
+    
+    </div>
+      
+      <div class="column">
+        <img src="https://images01.nicepage.com/47/e9/47e9872033581723cf1877c5bd01f314.png" alt="Mountains" style="width:100%">
+      <b><div style="font-size: 20px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding: 8px;">Construction 
+        Management</b><div style=" font-size: 17px;   font-family:proxima-nova,myriad pro,sans-serif; text-align: center;">Construction management involves planning, budgeting, coordinating, and supervising construction projects from start to finish. As a construction manager, you may work on various construction projects, including buildings, roads, bridges, and other structures. 
+    
+    
+</div></div>
+</div>
+</div>
+<br><br><br><br><br><br>
+<div class="slider-holder">
+        <span id="slider-image-1"></span>
+        <span id="slider-image-2"></span>
+        <span id="slider-image-3"></span>
+        <div class="image-holder">
+            <img src="https://www.sageglass.com/sites/default/files/right_side_image/performance_z1.jpg" class="slider-image" style="width: 800px;" />
+            <img src="https://www.sageglass.com/sites/default/files/right_side_image/performance_z2.jpg" class="slider-image" style="width: 800px;" />
+            <img src="https://www.sageglass.com/sites/default/files/right_side_image/performance_z4.jpg" class="slider-image" style="width: 800px;" />
+        </div>
+        <div class="button-holder">
+             <a href="#slider-image-1" class="slider-change"></a>
+            <a href="#slider-image-2" class="slider-change"></a>
+            <a href="#slider-image-3" class="slider-change"></a>
+        </div>
+        </div>
+        <b><div id="uk" style="font-size: 20px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding: 10px; height: 120px;">About Us</b><br>
+          <div style=" font-size: 17px;   font-family:proxima-nova,myriad pro,sans-serif; text-align: unset; height: 100px;">I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you.​This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors. Make your company stand out and show your visitors who you are.
+
+          </div>
+
+
+      
+      </div><br><br>
+        <div style="background-color: #e7d10f; height: 200px;">
+         
+      <div class="row1" style=" padding-right: 120px; padding-left: 320px;">
+  <div class="column1">
+    <b><div style="font-size: 75px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding-top:40px;  padding-right: 186px;">2035</b><div style=" font-size: 22px;   font-family:proxima-nova,myriad pro,sans-serif; text-align: center; text-align-last: justify; padding: 10px;">Year Established
+      </div>
+     </div>  
+  </div>
+<br><br>
+     <div class="column1">
+     <b><div style="font-size: 75px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding-top:5px;  padding-right: 186px;">206</b><div style=" font-size: 22px;   font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding: 10px">Projects Completed<br>
+    
+</div>
+    </div>
+    </div>
+    <div class="column1">
+        <b><div style="font-size: 75px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding-top:10px; padding-right: 186px;">806</b><div style=" font-size: 22px;   font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding: 10px">Contractors Appointed<br>
+       
+   </div></div>
+      </div></div>
+     </div>
+     <div id="projects" style="text-align: center; height: 100px;"><h1>Projects</h1></div>
+     <!--/nav-->
+        <div class="slider-holder1">
+        <span id="slider-image-4"></span>
+        <span id="slider-image-5"></span>
+        <span id="slider-image-6"></span>
+        <div class="image-holder1">
+            <img src="https://www.sageglass.com/sites/default/files/right_side_image/shapes.jpg" class="slider-image1" style="width: 800px;" />
+            <img src="https://www.sageglass.com/sites/default/files/right_side_image/sizes_2.jpg" class="slider-image1" style="width: 800px;" />
+            <img src="https://www.sageglass.com/sites/default/files/right_side_image/colors_1.jpg" class="slider-image1" style="width: 800px;" />
+        </div>
+        <div class="button-holder1">
+             <a href="#slider-image-4" class="slider-change1">Project 1</a>
+            <a href="#slider-image-5" class="slider-change1">Project 2</a>
+            <a href="#slider-image-6" class="slider-change1">Project 3</a>
+        </div>
+        </div>
+        <br><br>
+        <div style="text-align: center; height: 100px; font-size: 35px;"><h1>Clients</h1></div>
+        <div style="background-color: #e7d10f; height: 200px;">
+         
+            <div class="row1" style=" padding-right: 120px; padding-left: 320px;">
+        <div class="column1">
+          <b><div style="font-size: 75px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding-top:40px;  padding-right: 186px;">TCS</b>
+           </div>  
+        </div>
+      <br><br>
+           <div class="column1">
+           <b><div style="font-size: 75px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding-top:5px;  padding-right: 186px;">LTI</b>
+          </div>
+          </div>
+          <div class="column1">
+              <b><div style="font-size: 75px; font-family:proxima-nova,myriad pro,sans-serif; text-align: center; padding-top:10px; padding-right: 186px;">IBM</b>  
+         </div></div>
+            </div></div>
+           </div>  
+           <div id="contact" style="text-align: center; height: 100px; font-size: 35px;"><h1>Contact us</h1></div>
+
+          <br> 
+<br>
+<div class="container">
+    <form action="/action_page.php">
+      <label for="fname">First Name</label><br>
+      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+  <br>
+      <label for="lname">Last Name</label>
+      <br>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+  <br>
+      <label for="country">Country</label>
+      <br>
+      <select id="country" name="country">
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+      </select>
+  <br>
+      <label for="subject">Subject</label>
+      <br>
+      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+  
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+    
+<footer style="height: 200px;">
+<div class="footer">
+  <p class="footer-text-left">
+    <a href="index.html" class="menu" style="color: white;">Home</a>
+    <a href="https://css.sammy-codes.com/about.html" class="menu" style="color: white;">About</a>
+    <a href="https://css.sammy-codes.com/credits.html" class="menu" style="color: white;">Feedback</a>
+  </p>
+
+<div class="footer-content-right">
+  <a href="https://github.com/digitalocean"><img src="https://css.sammy-codes.com/images/github.jpeg" class="icon-style" alt="Github icon"></a>
+  <a href="https://www.twitter.com/DigitalOcean"><img src="https://css.sammy-codes.com/images/twitter.jpeg" class="icon-style" alt="Twitter icon"></a>
+  <a href="https://www.twitter.com"><img src="https://css.sammy-codes.com/images/email.jpeg" class="icon-style" alt="Emailicon"></a>
+</div>
+</div>
+</footer>
+  
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
+</body>
+</html> 
